@@ -7,7 +7,7 @@ function Home() {
   const [items,setItems]=useState(null)
 
   useEffect (()=> {
-      fetch('https://api.escuelajs.co/api/v1/products')
+      fetch('https://api.escuelajs.co/api/v1/products?offset=0&limit=120')
         .then(response => response.json())
         .then(data=> setItems(data))
   },[])
