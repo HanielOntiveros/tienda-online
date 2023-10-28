@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import { PlusIcon } from '@heroicons/react/24/solid'
+import { CheckIcon, PlusIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from "../../Context";
+import { render } from "react-dom";
 
 function Card({item}){
     const context = useContext(ShoppingCartContext)
@@ -18,7 +19,24 @@ function Card({item}){
         context.closeProductDetail()
     }
 
-    
+    const renderIcon = (id) => {
+        const isInCard = context.shoppingProducts.filter(product => product.id === id).length > 0
+        if(isInCard){
+            return(
+                <div className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
+                    onClick={(e)=>addProductsToCart(e, item)}
+                >
+                <CheckIcon className="h-6 w-6 text-black"></CheckIcon>   
+                </div>
+            )}
+            else{
+            return(
+                <div className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
+                    onClick={(e)=>addProductsToCart(e, item)}
+                >
+                <PlusIcon className="h-6 w-6 text-black"></PlusIcon>   
+                </div>
+            )}}
 
     return(
         <div 
@@ -30,11 +48,7 @@ function Card({item}){
                 >
                 <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 py-1 px-2">{item.category.name}</span>
                 <img src={item.images[0]} alt='headphones' className="w-full h-full object-cover rounded-lg"/>
-                <div className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
-                    onClick={(e)=>addProductsToCart(e, item)}
-                >
-                    <PlusIcon className="h-6 w-6 text-black"></PlusIcon>
-                </div>
+                {renderIcon(item.id)}
             </figure>
             <p className="flex justify-between">
                 <span className="text-sm font-light">{item.title}</span>
