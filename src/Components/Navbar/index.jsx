@@ -120,7 +120,7 @@ function Navbar() {
                     onClick={() => context.openCheckout()}
                 >
                 </ShoppingCartIcon>
-                <div className="text-lg font-normal mx-1">{context.count}</div>
+                <div className={context.shoppingProducts.length==0?'hidden':"text-lg font-normal mx-1"}>{context.shoppingProducts.length}</div>
                 </li>
                
             </ul>

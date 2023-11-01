@@ -8,6 +8,7 @@ export const ShoppingCartProvider = ({children})=>{
     const [isOpenProduct,setIsOpen]=useState(false)
     const [productToShow,setProductToShow]=useState({})
     const [shoppingProducts, setShoppingProducts] = useState([])
+    const [order , setOrder] = useState([])
 
     const [isOpenCheckout,setIsOpenCheckout]=useState(false)
     
@@ -18,9 +19,7 @@ export const ShoppingCartProvider = ({children})=>{
     const closeChekout = () => { setIsOpenCheckout(false) }
 
 
-    useEffect(() => {
-      console.log(shoppingProducts);
-    }, [shoppingProducts])
+  
     
 
     return(
@@ -36,7 +35,10 @@ export const ShoppingCartProvider = ({children})=>{
             setShoppingProducts,
             isOpenCheckout,
             openCheckout,
-            closeChekout
+            closeChekout,
+            order,
+            setOrder,
+            
         }}>
             {children}
         </ShoppingCartContext.Provider>
