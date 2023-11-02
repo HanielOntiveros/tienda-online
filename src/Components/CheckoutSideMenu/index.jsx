@@ -27,7 +27,6 @@ function CheckoutSideMenu(){
             context.closeChekout()
     }
     
-    console.log(context.order);
 
     return(
         <aside 

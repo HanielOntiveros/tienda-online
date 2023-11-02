@@ -11,20 +11,20 @@ function MyOrders() {
   const context = useContext(ShoppingCartContext)
 
     return (
-      <>
+      
       <Layout>
-        <div className='flex w-80 items-center justify-center'>
-          <h1>My orders</h1>
+        <div className='flex w-80 items-center justify-center mb-4'>
+          <h1 className='font-medium text-xl'>My orders</h1>
         </div>
         {context.order.map((ord,index) =>(
-          <Link key={index} to={`/my-orders/${ord.id}`}>
+          <Link key={index} to={`/my-orders/${index}`}>
             <OrdersCard 
               order={ord}
             />
           </Link>
         ))}
         </Layout>
-      </>
+      
     )
   }
   
